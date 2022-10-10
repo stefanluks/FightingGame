@@ -197,7 +197,7 @@ window.onload = () => {
         GameOverMsg.innerHTML = `
             <h2>${tipo}</h2>
             <h4>${venceu}</h4>
-            <a href="/" class="btn-reset">Revanche</a>
+            <a href="/stefanluks/FightingGame" class="btn-reset">Revanche</a>
         `;
         document.querySelector("body").appendChild(GameOverMsg);
     }
