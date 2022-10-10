@@ -4,30 +4,30 @@ window.onload = () => {
     const btnJogar = document.querySelector(".btn");
     const canvas = document.getElementById("jogo");
     const ctx = canvas.getContext("2d");
-    
+
     let gameover = false;
     let pause = true;
     let debug = false;
     let tecla_pressionada = "";
 
-    btnJogar.addEventListener("click", ()=>{
+    btnJogar.addEventListener("click", () => {
         document.querySelector(".life-bars").style.top = "0px";
         pause = false;
         document.querySelector(".btn-jogar").remove();
     });
-    
+
     let tempo = 99;
-    let timedow = setInterval(()=>{
-        if(!gameover){
-            if(!pause) tempo--;
-            if(tempo === 0){
+    let timedow = setInterval(() => {
+        if (!gameover) {
+            if (!pause) tempo--;
+            if (tempo === 0) {
                 GameOver("Fim de Tempo");
                 clearInterval(timedow);
             }
-        }else{
+        } else {
             clearInterval(timedow);
         }
-    },1000);
+    }, 1000);
 
     canvas.width = 1280;
     canvas.height = 590;
@@ -40,42 +40,42 @@ window.onload = () => {
     spriteP1.src = "./componentes/sprites/kungfuman.png";
     const p1 = new Player({
         sprite: spriteP1,
-        posicao:{
+        posicao: {
             x: 200,
             y: 80
         },
-        velocidade:{ 
-            x:0,
-            y:0
+        velocidade: {
+            x: 0,
+            y: 0
         },
-        dimensao:{
+        dimensao: {
             w: 100,
             h: 230
         },
-        cor:"green"
+        cor: "green"
     });
 
     const spriteP2 = new Image();
     spriteP2.src = "./componentes/sprites/kungfuman2.png";
     const p2 = new Player({
         sprite: spriteP2,
-        posicao:{
+        posicao: {
             x: 1000,
             y: 80
         },
-        velocidade:{ 
-            x:0,
-            y:0
+        velocidade: {
+            x: 0,
+            y: 0
         },
-        dimensao:{
+        dimensao: {
             w: 100,
             h: 230
         },
-        cor:"blue",
+        cor: "blue",
         player2: true
     });
 
-    function ColisaoAtaqueP1(){
+    function ColisaoAtaqueP1() {
         let ataque = p1.Ataques[p1.ataqueSelecionado];
         return (
             ataque.posicao.x + ataque.caixa.w >= p2.posicao.x &&
@@ -85,7 +85,7 @@ window.onload = () => {
         )
     }
 
-    function ColisaoAtaqueP2(){
+    function ColisaoAtaqueP2() {
         let ataque = p2.Ataques[p2.ataqueSelecionado];
         return (
             ataque.posicao.x + ataque.caixa.w >= p1.posicao.x &&
@@ -95,20 +95,20 @@ window.onload = () => {
         )
     }
 
-    function Vitoria(){
+    function Vitoria() {
         return p1.vida <= 0 || p2.vida <= 0;
     }
 
-    function animacao(){
+    function animacao() {
         p1.debug = p2.debug = debug;
         window.requestAnimationFrame(animacao);
-        if(!gameover && !pause){
+        if (!gameover && !pause) {
             ctx.fillStyle = "#6D5853";
             ctx.drawImage(bg1, 0, 0, 800, 432, 0, 0, canvas.width, canvas.height);
             ctx.fillRect(0, canvas.height - 50, canvas.width, 50);
 
-            let quadro = {w: canvas.width, h: canvas.height - 45};
-            
+            let quadro = { w: canvas.width, h: canvas.height - 45 };
+
             p1.Atualizar(quadro, gravidade, ctx);
             p2.Atualizar(quadro, gravidade, ctx);
 
@@ -116,50 +116,50 @@ window.onload = () => {
             p2.velocidade.x = 0;
             p1.andando = false;
             p2.andando = false;
-            
-            if(Teclas.a.presionado){
+
+            if (Teclas.a.presionado) {
                 p1.velocidade.x = -5;
                 p1.andando = true;
-            }else if(Teclas.d.presionado){
+            } else if (Teclas.d.presionado) {
                 p1.velocidade.x = 5;
                 p1.andando = true;
             }
-            
-            if(Teclas.ArrowLeft.presionado){
+
+            if (Teclas.ArrowLeft.presionado) {
                 p2.velocidade.x = -5;
                 p2.andando = true;
-            }else if(Teclas.ArrowRight.presionado){
+            } else if (Teclas.ArrowRight.presionado) {
                 p2.velocidade.x = 5;
                 p2.andando = true;
             }
 
-            if(p1.atacando && ColisaoAtaqueP1()){
+            if (p1.atacando && ColisaoAtaqueP1()) {
                 p2.vida -= 1;
             }
-            if(p2.atacando && ColisaoAtaqueP2()){
+            if (p2.atacando && ColisaoAtaqueP2()) {
                 p1.vida -= 1;
             }
 
-            if(Vitoria()) GameOver("Fim de Jogo!");
+            if (Vitoria()) GameOver("Fim de Jogo!");
         }
         ControleHUD();
     }
 
-    function ControleHUD(){
+    function ControleHUD() {
         let timer = document.querySelector(".timer");
-        if(pause) timer.innerHTML = "pause";
+        if (pause) timer.innerHTML = "pause";
         else timer.innerHTML = tempo;
-        
+
         let lifebarP1 = document.querySelector(".lb-player1");
         let lifebarP2 = document.querySelector(".lb-player2");
 
         lifebarP1.children[0].style.width = p1.vida + "%";
         lifebarP2.children[0].style.width = p2.vida + "%";
 
-        if(p1.vida < 100) lifebarP1.children[0].className = "sangue-bar e dano";
-        if(p2.vida < 100) lifebarP2.children[0].className = "sangue-bar d dano";
+        if (p1.vida < 100) lifebarP1.children[0].className = "sangue-bar e dano";
+        if (p2.vida < 100) lifebarP2.children[0].className = "sangue-bar d dano";
 
-        if(debug){
+        if (debug) {
             let debugText = `
                 <b>Debug: </b>${debug}<br>
                 <b>Pausado: </b>${pause}<br>
@@ -180,16 +180,16 @@ window.onload = () => {
                 TECLA PRESSIONADA: [ ${tecla_pressionada} ]
             `;
             document.querySelector(".debug").innerHTML = debugText;
-        }else{
-            document.querySelector(".debug").innerHTML="";
+        } else {
+            document.querySelector(".debug").innerHTML = "";
         }
     }
 
-    function GameOver(tipo){
+    function GameOver(tipo) {
         gameover = true;
         let venceu = "";
-        if(p1.vida > p2.vida) venceu = "Vitória do jogador 1";
-        else if(p2.vida > p1.vida) venceu = "Vitória do jogador 2";
+        if (p1.vida > p2.vida) venceu = "Vitória do jogador 1";
+        else if (p2.vida > p1.vida) venceu = "Vitória do jogador 2";
         else venceu = "Empate";
 
         let GameOverMsg = document.createElement("div");
@@ -197,55 +197,55 @@ window.onload = () => {
         GameOverMsg.innerHTML = `
             <h2>${tipo}</h2>
             <h4>${venceu}</h4>
-            <a href="/stefanluks/FightingGame" class="btn-reset">Revanche</a>
+            <a href="https://stefanluks.github.io/FightingGame/" class="btn-reset">Revanche</a>
         `;
         document.querySelector("body").appendChild(GameOverMsg);
     }
 
     animacao();
 
-    window.addEventListener("keydown", (event) =>{
-        tecla_pressionada= event.key;
-        if(!gameover){
+    window.addEventListener("keydown", (event) => {
+        tecla_pressionada = event.key;
+        if (!gameover) {
             switch (event.key) {
                 case 'a':
-                    if(!pause) Teclas.a.presionado = true;
+                    if (!pause) Teclas.a.presionado = true;
                     break;
                 case 'd':
-                    if(!pause) Teclas.d.presionado = true;
+                    if (!pause) Teclas.d.presionado = true;
                     break;
                 case 'w':
-                    if(!pause && p1.EstaNoChao) p1.velocidade.y = -8;
+                    if (!pause && p1.EstaNoChao) p1.velocidade.y = -8;
                     break;
                 case 'e':
-                    if(!pause){
+                    if (!pause) {
                         p1.ataqueSelecionado = 0;
                         p1.atacando = true;
                     }
                     break;
                 case 'q':
-                    if(!pause){
+                    if (!pause) {
                         p1.ataqueSelecionado = 1;
                         p1.atacando = true;
                     }
                     break;
                 case 'ArrowLeft':
-                    if(!pause) Teclas.ArrowLeft.presionado = true;
+                    if (!pause) Teclas.ArrowLeft.presionado = true;
                     break;
                 case 'ArrowRight':
-                    if(!pause) Teclas.ArrowRight.presionado = true;
+                    if (!pause) Teclas.ArrowRight.presionado = true;
                     break;
                 case 'ArrowUp':
-                    if(p2.EstaNoChao) p2.velocidade.y = -8;
+                    if (p2.EstaNoChao) p2.velocidade.y = -8;
                     break;
                 case '0':
-                    if(!pause){
+                    if (!pause) {
                         p2.ataqueSelecionado = 0;
                         p2.atacando = true;
                     }
                     break;
                 case '1':
-                    if(!pause){
+                    if (!pause) {
                         p2.ataqueSelecionado = 1;
                         p2.atacando = true;
                     }
@@ -260,8 +260,8 @@ window.onload = () => {
         }
     });
 
-    window.addEventListener("keyup", (event) =>{
-        if(!gameover && !pause){
+    window.addEventListener("keyup", (event) => {
+        if (!gameover && !pause) {
             switch (event.key) {
                 case 'a':
                     Teclas.a.presionado = false;
