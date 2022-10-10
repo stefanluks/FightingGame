@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./estilos.css">
+    <title>Fighting Game</title>
+</head>
+<body>
+    <div class="btn-jogar">
+        <div class="btn">JOGAR</div>
+    </div>
+    <div class="jogo">
+        <div class="life-bars">
+            <div class="life-bar e lb-player1">
+                <div class="sangue-bar e"></div>
+            </div>
+            <div class="timer">100</div>
+            <div class="life-bar d lb-player2">
+                <div class="sangue-bar d"></div>
+            </div>
+        </div>
+        <div class="debug"></div>
+        <canvas id="jogo"></canvas>
+    </div>
+    <script type="module" src="./sistema.js"></script>
+</body>
+</html>
