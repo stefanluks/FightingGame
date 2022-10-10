@@ -1,6 +1,6 @@
 export class Player {
 
-    constructor({sprite,posicao, velocidade, dimensao, cor = "red", player2=false}){
+    constructor({ sprite, posicao, velocidade, dimensao, cor = "red", player2 = false, animacao, animacaoPulo }) {
         this.debug = false;
         this.sprite = sprite;
         this.posicao = posicao;
@@ -14,10 +14,9 @@ export class Player {
         this.EstaNoChao = false;
         this.atacando = false;
         this.ataqueSelecionado = 0;
-        this.Ataques = [
-            {
-                cor:"gray",
-                posicao:{
+        this.Ataques = [{
+                cor: "gray",
+                posicao: {
                     x: this.posicao.x,
                     y: this.posicao.y - 100
                 },
@@ -27,8 +26,8 @@ export class Player {
                 }
             },
             {
-                cor:"white",
-                posicao:{
+                cor: "white",
+                posicao: {
                     x: this.posicao.x,
                     y: this.posicao.y
                 },
@@ -38,9 +37,12 @@ export class Player {
                 }
             },
         ]
+        this.animSet = 0;
+        this.anima = animacao;
+        this.animaJump = animacaoPulo;
     }
 
-    Atualizar(quadro, gravidade, ctx){
+    Atualizar(quadro, gravidade, ctx) {
         this.frames++;
         this.Desenhar(ctx);
 
@@ -48,34 +50,34 @@ export class Player {
         this.posicao.y += this.velocidade.y;
 
         this.Ataques.forEach(ataque => {
-            if(this.player2){
-                ataque.posicao.x = this.posicao.x -10 - this.dimensao.w/2;
-            }else{
+            if (this.player2) {
+                ataque.posicao.x = this.posicao.x - 10 - this.dimensao.w / 2;
+            } else {
                 ataque.posicao.x = this.posicao.x + this.dimensao.w;
             }
             ataque.posicao.y = this.posicao.y + 50;
         });
 
-        if(this.posicao.y + this.dimensao.h <= quadro.h){
+        if (this.posicao.y + this.dimensao.h <= quadro.h) {
             this.velocidade.y += gravidade;
-        }else{
+        } else {
             this.velocidade.y = 0;
             this.EstaNoChao = true;
         }
     }
 
-    Desenhar(ctx){
-        if(this.debug){
+    Desenhar(ctx) {
+        if (this.debug) {
             ctx.fillStyle = this.cor;
             ctx.fillRect(this.posicao.x, this.posicao.y, this.dimensao.w, this.dimensao.h);
         }
-        if(this.frames % 1 == 0){
-            if(this.sprite){
-                if(this.atacando){
+        if (true) {
+            if (this.sprite) {
+                if (this.atacando) {
 
                     let ataque = this.Ataques[this.ataqueSelecionado];
 
-                    if(this.debug){
+                    if (this.debug) {
                         ctx.fillStyle = ataque.cor;
                         ctx.fillRect(
                             ataque.posicao.x,
@@ -85,32 +87,36 @@ export class Player {
                         )
                     }
 
-                    if(this.player2){
-                        if(this.ataqueSelecionado == 0){
+                    if (this.player2) {
+                        if (this.ataqueSelecionado == 0) {
                             ctx.drawImage(this.sprite, 833, 500, 100, 120, this.posicao.x - 105, this.posicao.y, 200, 240);
                         }
-                        if(this.ataqueSelecionado == 1){
+                        if (this.ataqueSelecionado == 1) {
                             ctx.drawImage(this.sprite, 515, 500, 100, 120, this.posicao.x - 105, this.posicao.y, 200, 240);
                         }
-                    }else{
-                        if(this.ataqueSelecionado == 0){
+                    } else {
+                        if (this.ataqueSelecionado == 0) {
                             ctx.drawImage(this.sprite, 0, 500, 100, 120, this.posicao.x + 5, this.posicao.y, 200, 240);
                         }
-                        if(this.ataqueSelecionado == 1){
+                        if (this.ataqueSelecionado == 1) {
                             ctx.drawImage(this.sprite, 300, 500, 100, 120, this.posicao.x + 5, this.posicao.y, 200, 240);
                         }
                     }
-                }else{
-                    if(this.andando){
-                        if(this.player2){
+                } else {
+                    if (this.andando) {
+                        if (this.player2) {
                             ctx.drawImage(this.sprite, 0, 130, 100, 120, this.posicao.x - 105, this.posicao.y, 200, 240);
-                        }else{
-                            ctx.drawImage(this.sprite, 0, 130, 105, 120, this.posicao.x, this.posicao.y, 200, 240);
+                        } else {
+                            if (this.frames % 5 == 0) {
+                                if (this.animSet < this.anima.length - 1) this.animSet++;
+                                else this.animSet = 0;
+                            }
+                            ctx.drawImage(this.sprite, this.anima[this.animSet].x, this.anima[this.animSet].y, 105, 120, this.posicao.x + 5, this.posicao.y, 200, 240);
                         }
-                    }else{
-                        if(this.player2){
+                    } else {
+                        if (this.player2) {
                             ctx.drawImage(this.sprite, 833, 0, 100, 130, this.posicao.x - 105, this.posicao.y, 200, 240);
-                        }else{
+                        } else {
                             ctx.drawImage(this.sprite, 0, 0, 100, 130, this.posicao.x + 5, this.posicao.y, 200, 240);
                         }
                     }
@@ -130,19 +136,19 @@ export const Teclas = {
     w: {
         presionado: false
     },
-    ArrowLeft:{
+    ArrowLeft: {
         presionado: false
     },
-    ArrowRight:{
+    ArrowRight: {
         presionado: false
     },
-    ArrowUp:{
+    ArrowUp: {
         presionado: false
     },
-    0:{
+    0: {
         presionado: false
     },
-    1:{
+    1: {
         presionado: false
     }
 }
