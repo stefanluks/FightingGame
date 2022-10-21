@@ -1,3 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #f2f2f2;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#jogo {
+    border: 2px solid black;
+}
+
 @font-face {
     font-family: 'SuperMario256';
     src: url("./componentes/fonts/SuperMario256.ttf") format("truetype");
@@ -8,30 +27,30 @@
     src: url("./componentes/fonts/PEOPLEBOOK.otf") format("truetype");
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: gray;
 }
 
-.jogo{
+.jogo {
     overflow: hidden;
     width: 100%;
     min-height: 100vh;
     background-color: gray;
 }
 
-.jogo canvas{
+.jogo canvas {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
-.life-bars{
+.life-bars {
     z-index: 5;
     margin-top: 20px;
     width: 100%;
@@ -44,7 +63,7 @@ body{
     justify-content: space-between;
 }
 
-.life-bar{
+.life-bar {
     width: 100%;
     height: 80%;
     background-color: rgba(107, 16, 16, 0.863);
@@ -54,7 +73,7 @@ body{
     position: relative;
 }
 
-.life-bar::before{
+.life-bar::before {
     position: absolute;
     top: 20%;
     left: 50%;
@@ -68,7 +87,7 @@ body{
     box-shadow: 0 0 20px white;
 }
 
-.timer{
+.timer {
     width: 200px;
     height: 80px;
     background-color: rgba(43, 12, 12, 0.863);
@@ -83,38 +102,38 @@ body{
     color: white;
 }
 
-.e{
+.e {
     border-radius: 50px 0px 0px 50px;
 }
 
-.d{
+.d {
     border-radius: 0px 50px 50px 0px;
 }
 
-.lb-player1{
+.lb-player1 {
     margin-left: 20px;
     justify-content: flex-end;
 }
 
-.lb-player2{
+.lb-player2 {
     margin-right: 20px;
 }
 
-.sangue-bar{
+.sangue-bar {
     width: 100%;
     height: 100%;
     background-color: blue;
 }
 
-.sangue-bar.e.dano{
+.sangue-bar.e.dano {
     box-shadow: -15px 0px 0px darkblue;
 }
 
-.sangue-bar.d.dano{
+.sangue-bar.d.dano {
     box-shadow: 15px 0px 0px darkblue;
 }
 
-.game-over-msg{
+.game-over-msg {
     z-index: 10;
     width: 100%;
     height: 100vh;
@@ -131,15 +150,15 @@ body{
 }
 
 @keyframes gameOverShow {
-    0%{
+    0% {
         top: -100%;
     }
-    100%{
+    100% {
         top: 50%;
     }
 }
 
-.game-over-msg h2{
+.game-over-msg h2 {
     letter-spacing: 2px;
     font-family: 'PeopleBook';
     font-size: 100px;
@@ -147,32 +166,31 @@ body{
 }
 
 @keyframes tituloShow {
-    0%{
+    0% {
         letter-spacing: -50px;
     }
-    100%{
+    100% {
         letter-spacing: 2px;
     }
 }
 
-.game-over-msg h4{
+.game-over-msg h4 {
     font-family: 'SuperMario256';
     font-size: 50px;
     letter-spacing: 2px;
     animation: normal 3s vencedor;
 }
 
-
 @keyframes vencedor {
-    0%{
+    0% {
         font-size: 0px;
     }
-    100%{
+    100% {
         font-size: 50px;
     }
 }
 
-.btn-reset{
+.btn-reset {
     text-decoration: none;
     width: 150px;
     height: 50px;
@@ -190,20 +208,18 @@ body{
     animation: normal 3s btnSHow;
 }
 
-
 @keyframes btnSHow {
-    0%{
+    0% {
         font-size: 0px;
         height: 0px;
     }
-    100%{
+    100% {
         font-size: 20px;
         height: 50px;
     }
 }
 
-
-.btn-reset:hover{
+.btn-reset:hover {
     font-weight: bold;
     font-size: 25px;
     background-color: black;
@@ -211,14 +227,14 @@ body{
     border: 1px solid white;
 }
 
-.debug{
+.debug {
     z-index: 15;
     position: fixed;
     top: 100px;
     left: 40px;
 }
 
-.btn-jogar{
+.btn-jogar {
     z-index: 50;
     position: fixed;
     width: 100%;
@@ -232,7 +248,7 @@ body{
     background-repeat: no-repeat;
 }
 
-.btn{
+.btn {
     position: absolute;
     top: 25%;
     left: 20%;
@@ -251,12 +267,12 @@ body{
     transition: .5s;
 }
 
-.btn:hover{
+.btn:hover {
     font-size: 25px;
     border: 5px solid black;
 }
 
-.img-inicio{
+.img-inicio {
     box-shadow: 5px 5px 0px white, -5px -5px 0px white, -5px 5px 0px white, 5px -5px 0px white;
     width: 40%;
     border-radius: 20px;
