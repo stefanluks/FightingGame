@@ -7,7 +7,7 @@
 
 <br>
 
-![Arte do Jogo](./componentes/sprites/arte.jpg)
+![Arte do Jogo](./assets/sprites/arte.jpg)
 
 <br>
 
