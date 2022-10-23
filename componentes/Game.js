@@ -36,7 +36,7 @@ export default class Game {
             });
         }
 
-        if (this.telaAtiva != null) this.telaAtiva.Atualizar();
+        if (this.telaAtiva != null) this.telaAtiva.Atualizar(this.dimensao);
     }
 
     Desenhar(ctx) {

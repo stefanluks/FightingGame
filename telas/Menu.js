@@ -1,6 +1,6 @@
 import Tela from "../componentes/Tela.js";
 
-const Menu = new Tela("Menu", false);
+const Menu = new Tela("Menu", true);
 
 let frame = 0;
 let show = true;

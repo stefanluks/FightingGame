@@ -10,7 +10,19 @@
 </head>
 
 <body>
-    <canvas id="jogo"></canvas>
+    <div class="jogo">
+        <div class="life-bars">
+            <div class="life-bar e lb-player1">
+                <div class="sangue-bar e"></div>
+            </div>
+            <div class="timer">100</div>
+            <div class="life-bar d lb-player2">
+                <div class="sangue-bar d"></div>
+            </div>
+        </div>
+        <div class="debug"></div>
+        <canvas id="jogo"></canvas>
+    </div>
     <script type="module" src="./src/jogo.js"></script>
 </body>
 

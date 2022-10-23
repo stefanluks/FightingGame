@@ -1,5 +1,4 @@
 export class Player {
-
     constructor({ sprite, posicao, velocidade, dimensao, cor = "red", player2 = false, animacao }) {
         this.debug = false;
         this.sprite = sprite;

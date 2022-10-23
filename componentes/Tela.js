@@ -4,13 +4,27 @@ export default class Tela {
         this.ativo = ativo;
         this.teclasDown = {};
         this.teclasUp = {};
+        this.game = null;
+        this.audios = [];
     }
 
-    Atualizar() {
+    getGame(){
+        return this.game;
+    }
+
+    Atualizar(dimensao) {
         console.log("Atualizando tela " + this.nome);
     }
 
+    novoAudio(url){
+        let audio = new Audio();
+        audio.src = url;
+        this.audios.push(audio);
+        return this.audios.indexOf(audio);
+    }
+
     teclaPressionada(tecla) {
+        console.log(tecla)
         let btn = this.teclasDown[tecla];
         if (btn) btn();
     }

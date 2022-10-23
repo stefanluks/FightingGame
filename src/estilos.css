@@ -14,40 +14,18 @@ body {
 }
 
 #jogo {
+    z-index: 0;
     border: 2px solid black;
 }
 
 @font-face {
     font-family: 'SuperMario256';
-    src: url("./componentes/fonts/SuperMario256.ttf") format("truetype");
+    src: url("../assets/fonts/SuperMario256.ttf") format("truetype");
 }
 
 @font-face {
     font-family: 'PeopleBook';
-    src: url("./componentes/fonts/PEOPLEBOOK.otf") format("truetype");
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: gray;
-}
-
-.jogo {
-    overflow: hidden;
-    width: 100%;
-    min-height: 100vh;
-    background-color: gray;
-}
-
-.jogo canvas {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    src: url("../assets/fonts/PEOPLEBOOK.otf") format("truetype");
 }
 
 .life-bars {
