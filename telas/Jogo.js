@@ -177,7 +177,7 @@ function GameOver(tipo) {
     GameOverMsg.innerHTML = `
         <h2>${tipo}</h2>
         <h4>${venceu}</h4>
-        <a href="https://stefanluks.github.io/FightingGame/" class="btn-reset">Revanche</a>
+        <button onclick="window.location.reload()" class="btn-reset">Revanche</button>
     `;
     document.querySelector("body").appendChild(GameOverMsg);
 }
