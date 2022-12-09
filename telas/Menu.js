@@ -1,4 +1,4 @@
-import Tela from "../componentes/Tela.js";
+import Tela from "/componentes/Tela.js";
 
 const Menu = new Tela("Menu", true);
 
@@ -6,7 +6,7 @@ let frame = 0;
 let show = true;
 
 let bg = new Image();
-bg.src = "../assets/sprites/arte.jpg";
+bg.src = "/assets/sprites/arte.jpg";
 
 
 Menu.teclasDown = {

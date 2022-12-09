@@ -1,5 +1,5 @@
-import Tela from "../componentes/Tela.js";
-import { Player, Teclas } from "../componentes/Player.js";
+import Tela from "/componentes/Tela.js";
+import { Player, Teclas } from "/componentes/Player.js";
 
 const Jogo = new Tela("Jogo", false);
 
@@ -11,10 +11,10 @@ let tecla_pressionada = "";
 //Personagens padrões
 
 const spriteP1 = new Image();
-spriteP1.src = "../assets/sprites/kungfuman.png";
+spriteP1.src = "/assets/sprites/kungfuman.png";
 
 const spriteP2 = new Image();
-spriteP2.src = "../assets/sprites/kungfuman2.png";
+spriteP2.src = "/assets/sprites/kungfuman2.png";
 
 Jogo.p1 = new Player({
     sprite: spriteP1,
@@ -97,7 +97,7 @@ let timedow = setInterval(() => {
 }, 1000);
 
 let bg1 = new Image();
-bg1.src = "../assets/backgrounds/bg3.jpg";
+bg1.src = "/assets/backgrounds/bg3.jpg";
 
 const gravidade = 0.2;
 
