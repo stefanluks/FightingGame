@@ -1,5 +1,5 @@
 import Tela from "../componentes/Tela.js";
-import {Player, Teclas} from "../componentes/Player.js";
+import { Player, Teclas } from "../componentes/Player.js";
 
 const Jogo = new Tela("Jogo", false);
 
@@ -183,7 +183,7 @@ function GameOver(tipo) {
 }
 
 Jogo.Atualizar = () => {
-    if(Jogo.ativo){
+    if (Jogo.ativo) {
         Jogo.p1.debug = Jogo.p2.debug = debug;
         if (!gameover && !pause) {
             Jogo.p1.velocidade.x = 0;
@@ -250,13 +250,13 @@ Jogo.teclasDown = {
         }
     },
     e: () => {
-        if(!pause){
+        if (!pause) {
             p1.ataqueSelecionado = 0;
             p1.atacando = true;
         }
     },
     q: () => {
-        if(!pause){
+        if (!pause) {
             p1.ataqueSelecionado = 1;
             p1.atacando = true;
         }
@@ -277,13 +277,13 @@ Jogo.teclasDown = {
         }
     },
     0: () => {
-        if(!pause){
+        if (!pause) {
             p2.ataqueSelecionado = 0;
             p2.atacando = true;
         }
     },
     1: () => {
-        if(!pause){
+        if (!pause) {
             p2.ataqueSelecionado = 1;
             p2.atacando = true;
         }
