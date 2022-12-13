@@ -5,25 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Figthing Game</title>
-    <link rel="stylesheet" href="./src/estilos.css">
+    <title>SL Engine</title>
+    <link rel="shortcut icon" href="./src/assets/sprites/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./src/config/estilos.css">
 </head>
 
 <body>
-    <div class="jogo">
-        <div class="life-bars">
-            <div class="life-bar e lb-player1">
-                <div class="sangue-bar e"></div>
-            </div>
-            <div class="timer">100</div>
-            <div class="life-bar d lb-player2">
-                <div class="sangue-bar d"></div>
-            </div>
-        </div>
-        <div class="debug"></div>
-        <canvas id="jogo"></canvas>
-    </div>
-    <script type="module" src="./src/jogo.js"></script>
+    <canvas id="application">
+    </canvas>
+    <script type="module" src="./sistema.js"></script>
 </body>
 
 </html>

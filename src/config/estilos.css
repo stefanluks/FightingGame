@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.barras-de-vida {
+    z-index: 55;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-vs {
+    width: 10%;
+}
+
+.vida-p1,
+.vida-p2 {
+    position: relative;
+    width: 48%;
+    height: 80%;
+    margin: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vida-p1 {
+    align-items: flex-start;
+}
+
+.vida-p2 {
+    align-items: flex-end;
+}
+
+.life {
+    width: 98%;
+    height: 80%;
+    border: 2px solid white;
+    border-radius: 10px;
+    position: relative;
+}
+
+.sangue {
+    border-radius: 10px;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.nome-p1,
+.nome-p2 {
+    color: white;
+    text-shadow: 0 0 5px black;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.vida-p1 .life {
+    background-color: rgba(122, 44, 44, 0.397);
+}
+
+.vida-p1 .life .sangue {
+    background-color: rgb(185, 11, 11);
+}
+
+.vida-p2 .life {
+    background-color: rgba(44, 45, 122, 0.397);
+}
+
+.vida-p2 .life .sangue {
+    background-color: rgb(11, 14, 185);
+}
+
+.life::after {
+    position: absolute;
+    top: 2px;
+    border-radius: 10px;
+    content: '';
+    display: block;
+    width: 60%;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.747);
+}
+
+.life::before {
+    position: absolute;
+    top: 2px;
+    border-radius: 10px;
+    content: '';
+    display: block;
+    width: 10%;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.452);
+}
+
+.vida-p1 .life::before {
+    right: 20px;
+}
+
+.vida-p2 .life::before {
+    left: 20px;
+}
+
+.vida-p1 .life::after {
+    left: 10px;
+}
+
+.vida-p2 .life::after {
+    right: 10px;
+}
