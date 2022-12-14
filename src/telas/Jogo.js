@@ -2,7 +2,7 @@ import Tela from '../modelos/Tela.js';
 
 const Jogo = new Tela({
     nome: 'Jogo',
-    ativa: true,
+    ativa: false,
 });
 
 Jogo.teclas = {

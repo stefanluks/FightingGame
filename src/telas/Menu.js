@@ -2,7 +2,7 @@ import Tela from '../modelos/Tela.js';
 
 const Menu = new Tela({
     nome: 'Menu',
-    ativa: false,
+    ativa: true,
 });
 
 Menu.elementos = {
